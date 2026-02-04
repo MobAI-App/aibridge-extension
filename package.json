@@ -1,0 +1,70 @@
+{
+  "name": "aibridge-cursor",
+  "displayName": "AiBridge",
+  "description": "HTTP API for external applications to inject text into Cursor's Composer",
+  "publisher": "mobai",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MobAI-App/ai-bridge-cursor-extension"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "icon": "icon.png",
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "AiBridge",
+      "properties": {
+        "aibridge.port": {
+          "type": "number",
+          "default": 9999,
+          "description": "Port for the HTTP server"
+        },
+        "aibridge.host": {
+          "type": "string",
+          "default": "127.0.0.1",
+          "description": "Host for the HTTP server"
+        },
+        "aibridge.paranoid": {
+          "type": "boolean",
+          "default": false,
+          "description": "Inject without auto-submit"
+        },
+        "aibridge.autoStart": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically start server on extension activation"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "aibridge.start",
+        "title": "AiBridge: Start Server"
+      },
+      {
+        "command": "aibridge.stop",
+        "title": "AiBridge: Stop Server"
+      },
+      {
+        "command": "aibridge.status",
+        "title": "AiBridge: Show Status"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0"
+  }
+}
